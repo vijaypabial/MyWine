@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+  resources :wines
   get 'pages/home'
   get 'pages/vineyards'
   get 'pages/wines'
