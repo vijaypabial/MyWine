@@ -7,7 +7,6 @@ class PagesController < ApplicationController
   end
 
   def wines
-    @wines = Wine.all
   end
 
   def my_cart
