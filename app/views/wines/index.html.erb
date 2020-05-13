@@ -1,9 +1,9 @@
 <h1>Wines</h1>
 
-<tr> <% @wines.each do |wine|%></tr>
-    <tr> <%= image_tag wine.wine_image%></tr>
-    <tr> <%= wine.title%></tr>
-    <tr> <%= wine.variety%></tr>
-    <tr> <%= wine.description%></tr>
-    <tr> <%= wine.price%></tr>
+ <% @wines.each do |wine|%>
+     <p><%= image_tag wine.wine_image%></p>
+     <p><%= wine.title%></p>
+     <p><%= wine.variety%></p>
+     <p><%= wine.description%></p>
+     <p><%= wine.price%></p>
     <%end%>

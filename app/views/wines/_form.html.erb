@@ -1,0 +1,38 @@
+<%= form_with(model: wine, local: true) do |form| %>
+    <% if wine.errors.any? %>
+      <div id="error_explanation">
+        <h2><%= pluralize(wine.errors.count, "error") %> prohibited this item from being saved:</h2>
+  
+        <ul>
+          <% wine.errors.full_messages.each do |message| %>
+            <li><%= message %></li>
+          <% end %>
+        </ul>
+      </div>
+    <% end %>
+  
+    <div class="field">
+      <%= form.label :title %>
+      <%= form.text_field :title %>
+    </div>
+  
+    <div class="field">
+      <%= form.label :wine_image %>
+      <%= form.file_field :wine_image, accept: 'image/png,image/gif,image/jpeg,image/jpg,image/webp'  %>
+    </div>
+  
+    <div class="field">
+      <%= form.label :description %>
+      <%= form.text_area :description %>
+    </div>
+
+    <div class="field">
+      <%= form.label :price %>
+      <%= form.text_area :price %>
+    </div>
+  
+    <div class="actions">
+      <%= form.submit %>
+    </div>
+  <% end %>
+  
