@@ -3,11 +3,13 @@
 one:
   title: MyString
   variety: MyString
-  description: MyString
-  image: MyText
+  description: MyText
+  wine_image: MyText
+  price: 9.99
 
 two:
   title: MyString
   variety: MyString
-  description: MyString
-  image: MyText
+  description: MyText
+  wine_image: MyText
+  price: 9.99

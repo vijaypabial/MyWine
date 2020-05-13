@@ -17,7 +17,7 @@
       <tr>
         <td><%= vineyard.title %></td>
         <td><%= vineyard.about %></td>
-        <td><%= vineyard.main_image %></td>
+        <td><%= image_tag vineyard.main_image %></td>
         <td><%= link_to 'Show', vineyard %></td>
         <td><%= link_to 'Edit', edit_vineyard_path(vineyard) %></td>
         <td><%= link_to 'Destroy', vineyard, method: :delete, data: { confirm: 'Are you sure?' } %></td>

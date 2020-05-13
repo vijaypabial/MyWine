@@ -3,8 +3,9 @@ class CreateWines < ActiveRecord::Migration[6.0]
     create_table :wines do |t|
       t.string :title
       t.string :variety
-      t.string :description
-      t.text :image
+      t.text :description
+      t.text :wine_image
+      t.decimal :price
 
       t.timestamps
     end
