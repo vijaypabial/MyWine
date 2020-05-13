@@ -9,12 +9,13 @@ It is a long established fact that a reader will be distracted by the readable c
 		main_image: "https://via.placeholder.com/500x300"
 		)
 end
-
+puts "Hello"
 12.times do |wine|
 	Wine.create!(
 	title: "Mud House#{wine}",
 	variety: "Sauvignon Blanc #{wine}",
 	description: "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse",
-	image: "https://via.placeholder.com/300x150"
+	wine_image: "https://via.placeholder.com/300x150",
+	price: "15.99"
 	)
 end
