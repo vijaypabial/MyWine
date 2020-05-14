@@ -1,5 +1,6 @@
 Rails.application.routes.draw do
   
+  devise_for :users
   resources :vineyards
   get 'vineyards', to: "vineyards#index"
   get 'wines', to: "wines#index"
