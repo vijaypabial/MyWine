@@ -1,4 +1,5 @@
 class WinesController < ApplicationController
+  before_action :set_wine, only: [:show, :edit, :update, :destroy, :toggle_status]
     def index
         @wines = Wine.all
     end
@@ -18,6 +19,15 @@ class WinesController < ApplicationController
           format.html { redirect_to wines_url, notice: 'Item was successfully removed.' }
           format.json { head :no_content }
         end
+      end
+      def toggle_status
+        if @wine.draft?
+          @wine.published! 
+        elsif
+          @wine.published?
+          @wine.draft!
+        end
+        redirect_to wines_path, notice: "Status has been updated."
       end
     def create
         @wine = Wine.new(params.require(:wine).permit(:title,:variety, :description, :wine_image,:price))
@@ -40,5 +50,9 @@ class WinesController < ApplicationController
             format.html { render :edit }
           end
         end
+      end
+      private
+      def set_wine
+        @wine = Wine.friendly.find(params[:id])
       end
 end
