@@ -1,3 +1,4 @@
+<p id="notice"><%= notice %></p>
 <h1>Wines</h1>
 <%= link_to "Create new Wine", new_wine_path%>
 
@@ -7,6 +8,7 @@
      <p><%= wine.variety%></p>
      <p><%= wine.description%></p>
      <p><%= wine.price%></p>
+     <p><%= link_to wine.status, toggle_status_wine_path(wine)%></p>
      <%= link_to "Edit", edit_wine_path(wine)%>
      <%= link_to 'Delete Item', wine_path(wine), method: :delete, data: { confirm: 'Are you sure?' } %>
     <%end%>
