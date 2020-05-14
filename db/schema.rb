@@ -10,7 +10,11 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
+<<<<<<< HEAD
 ActiveRecord::Schema.define(version: 2020_05_14_121121) do
+=======
+ActiveRecord::Schema.define(version: 2020_05_14_101404) do
+>>>>>>> 3c77fa7ae059fe143f23be9f6cb2826a89ff70ec
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -64,9 +68,11 @@ ActiveRecord::Schema.define(version: 2020_05_14_121121) do
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
     t.string "slug"
-    t.integer "status", default: 0
+    t.bigint "vineyard_id", null: false
     t.index ["slug"], name: "index_wines_on_slug", unique: true
+    t.index ["vineyard_id"], name: "index_wines_on_vineyard_id"
   end
 
   add_foreign_key "active_storage_attachments", "active_storage_blobs", column: "blob_id"
+  add_foreign_key "wines", "vineyards"
 end

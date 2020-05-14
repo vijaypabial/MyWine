@@ -33,7 +33,7 @@ class WinesController < ApplicationController
     end
 
     def create
-      @wine = Wine.new(params.require(:wine).permit(:title,:variety, :description, :wine_image,:price))
+      @wine = Wine.new(wine_params)
       respond_to do |format|
         if @wine.save
           format.html { redirect_to wines_path, notice: 'Item was successfully created.' }
@@ -45,7 +45,7 @@ class WinesController < ApplicationController
 
     def update
       respond_to do |format|
-        if @wine.update(params.require(:wine).permit(:title,:variety, :description, :wine_image,:price))
+        if @wine.update(wine_params)
          format.html { redirect_to wines_path, notice: 'Item was successfully updated.' }
         else
           format.html { render :edit }
@@ -56,5 +56,9 @@ class WinesController < ApplicationController
     private
     def set_wine
       @wine = Wine.friendly.find(params[:id])
+    end
+
+    def wine_params
+      params.require(:wine).permit(:title,:variety, :description, :wine_image,:price)
     end
 end
