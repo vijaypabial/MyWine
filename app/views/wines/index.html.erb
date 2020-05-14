@@ -5,10 +5,11 @@
  <% @wines.each do |wine|%>
      <p><%= link_to wine.title, wine_path(wine)%></p>
      <p><%= image_tag("download.jpeg")%></p>
+     <p><%= image_tag wine.wine_image%></p>
      <p><%= wine.variety%></p>
      <p><%= wine.description%></p>
      <p><%= wine.price%></p>
-     
+     <%= link_to wine.status, toggle_status_wine_path(wine)%>
      <%= link_to "Edit", edit_wine_path(wine)%>
      <%= link_to 'Delete Item', wine_path(wine), method: :delete, data: { confirm: 'Are you sure?' } %>
     <%end%>
