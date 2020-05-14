@@ -6,13 +6,13 @@ class WinesController < ApplicationController
         @wine=Wine.new
     end
     def edit
-        @wine = Wine.find(params[:id])
+        @wine = Wine.friendly.find(params[:id])
       end
       def show
-        @wine = Wine.find(params[:id])
+        @wine = Wine.friendly.find(params[:id])
       end
       def destroy
-        @wine = Wine.find(params[:id])
+        @wine = Wine.friendly.find(params[:id])
         @wine.destroy
         respond_to do |format|
           format.html { redirect_to wines_url, notice: 'Item was successfully removed.' }
@@ -32,7 +32,7 @@ class WinesController < ApplicationController
       end
       
       def update
-        @wine = Wine.find(params[:id])
+        @wine = Wine.friendly.find(params[:id])
         respond_to do |format|
           if @wine.update(params.require(:wine).permit(:title,:variety, :description, :wine_image,:price))
             format.html { redirect_to wines_path, notice: 'Item was successfully updated.' }
