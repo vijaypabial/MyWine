@@ -5,6 +5,20 @@ class WinesController < ApplicationController
     def new
         @wine=Wine.new
     end
+    def edit
+        @wine = Wine.find(params[:id])
+      end
+      def show
+        @wine = Wine.find(params[:id])
+      end
+      def destroy
+        @wine = Wine.find(params[:id])
+        @wine.destroy
+        respond_to do |format|
+          format.html { redirect_to wines_url, notice: 'Item was successfully removed.' }
+          format.json { head :no_content }
+        end
+      end
     def create
         @wine = Wine.new(params.require(:wine).permit(:title,:variety, :description, :wine_image,:price))
     
@@ -16,9 +30,7 @@ class WinesController < ApplicationController
           end
         end
       end
-      def edit
-        @wine = Wine.find(params[:id])
-      end
+      
       def update
         @wine = Wine.find(params[:id])
         respond_to do |format|
