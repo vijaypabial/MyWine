@@ -10,14 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-<<<<<<< HEAD
-<<<<<<< HEAD
 ActiveRecord::Schema.define(version: 2020_05_14_121121) do
-=======
-ActiveRecord::Schema.define(version: 2020_05_14_101404) do
->>>>>>> 3c77fa7ae059fe143f23be9f6cb2826a89ff70ec
-=======
->>>>>>> 84950df605b31bb41188cc8261a9a9cfff999d10
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -71,6 +64,7 @@ ActiveRecord::Schema.define(version: 2020_05_14_101404) do
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
     t.string "slug"
+    t.integer "status", default: 0
     t.bigint "vineyard_id", null: false
     t.index ["slug"], name: "index_wines_on_slug", unique: true
     t.index ["vineyard_id"], name: "index_wines_on_vineyard_id"
