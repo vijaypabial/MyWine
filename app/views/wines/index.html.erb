@@ -2,10 +2,10 @@
 <%= link_to "Create new Wine", new_wine_path%>
 
  <% @wines.each do |wine|%>
-     <p><%= wine.title%></p>
+     <p><%= link_to wine.title, wine_path(wine)%></p>
      <p><%= image_tag("download.jpeg")%></p>
      <p><%= wine.variety%></p>
      <p><%= wine.description%></p>
      <p><%= wine.price%></p>
-     <%= link_to "Edit", edit_wine_path(wine.id)%>
+     <%= link_to "Edit", edit_wine_path(wine)%>
     <%end%>
