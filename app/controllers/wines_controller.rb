@@ -3,56 +3,58 @@ class WinesController < ApplicationController
     def index
         @wines = Wine.all
     end
+
     def new
         @wine=Wine.new
     end
+
     def edit
-        @wine = Wine.friendly.find(params[:id])
-      end
-      def show
-        @wine = Wine.friendly.find(params[:id])
-      end
-      def destroy
-        @wine = Wine.friendly.find(params[:id])
-        @wine.destroy
+    end
+
+    def show
+    end
+
+    def destroy
+      @wine.destroy
         respond_to do |format|
-          format.html { redirect_to wines_url, notice: 'Item was successfully removed.' }
-          format.json { head :no_content }
+        format.html { redirect_to wines_url, notice: 'Item was successfully removed.' }
+        format.json { head :no_content }
         end
-      end
-      def toggle_status
-        if @wine.draft?
+    end
+
+    def toggle_status
+      if @wine.draft?
           @wine.published! 
         elsif
           @wine.published?
           @wine.draft!
-        end
+      end
         redirect_to wines_path, notice: "Status has been updated."
-      end
+    end
+
     def create
-        @wine = Wine.new(params.require(:wine).permit(:title,:variety, :description, :wine_image,:price))
-    
-        respond_to do |format|
-          if @wine.save
-            format.html { redirect_to wines_path, notice: 'Item was successfully created.' }
-          else
-            format.html { render :new }
-          end
+      @wine = Wine.new(params.require(:wine).permit(:title,:variety, :description, :wine_image,:price))
+      respond_to do |format|
+        if @wine.save
+          format.html { redirect_to wines_path, notice: 'Item was successfully created.' }
+        else
+          format.html { render :new }
         end
       end
-      
-      def update
-        @wine = Wine.friendly.find(params[:id])
-        respond_to do |format|
-          if @wine.update(params.require(:wine).permit(:title,:variety, :description, :wine_image,:price))
-            format.html { redirect_to wines_path, notice: 'Item was successfully updated.' }
-          else
-            format.html { render :edit }
-          end
+    end
+
+    def update
+      respond_to do |format|
+        if @wine.update(params.require(:wine).permit(:title,:variety, :description, :wine_image,:price))
+         format.html { redirect_to wines_path, notice: 'Item was successfully updated.' }
+        else
+          format.html { render :edit }
         end
       end
-      private
-      def set_wine
-        @wine = Wine.friendly.find(params[:id])
-      end
+    end
+
+    private
+    def set_wine
+      @wine = Wine.friendly.find(params[:id])
+    end
 end
