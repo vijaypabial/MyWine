@@ -14,14 +14,14 @@
 
   <tbody>
     <% @vineyards.each do |vineyard| %>
-      <tr>
+    
         <p><%= vineyard.title %></p>
-        <td><%= vineyard.about %></td>
-        <td><%= vineyard.main_image %></td>
-        <td><%= link_to 'Show', vineyard %></td>
-        <td><%= link_to 'Edit', edit_vineyard_path(vineyard) %></td>
-        <td><%= link_to 'Delete', vineyard, method: :delete, data: { confirm: 'Are you sure?' } %></td>
-      </tr>
+        <p><%= vineyard.main_image %></p>
+        <p><%= vineyard.about %></p>
+        <tr><%= link_to 'Show', vineyard %></tr>
+        <tr><%= link_to 'Edit', edit_vineyard_path(vineyard) %></tr>
+        <tr><%= link_to 'Delete', vineyard, method: :delete, data: { confirm: 'Are you sure?' } %></tr>
+    
     <% end %>
   </tbody>
 </table>

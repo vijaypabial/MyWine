@@ -8,7 +8,7 @@
      <p><%= wine.variety%></p>
      <p><%= wine.description%></p>
      <p><%= wine.price%></p>
-     <p><%= link_to wine.status, toggle_status_wine_path(wine)%></p>
+     
      <%= link_to "Edit", edit_wine_path(wine)%>
      <%= link_to 'Delete Item', wine_path(wine), method: :delete, data: { confirm: 'Are you sure?' } %>
     <%end%>
