@@ -10,7 +10,11 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
+<<<<<<< Updated upstream
 ActiveRecord::Schema.define(version: 2020_05_14_121121) do
+=======
+ActiveRecord::Schema.define(version: 2020_05_14_034938) do
+>>>>>>> Stashed changes
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -65,7 +69,10 @@ ActiveRecord::Schema.define(version: 2020_05_14_121121) do
     t.datetime "updated_at", precision: 6, null: false
     t.string "slug"
     t.integer "status", default: 0
+<<<<<<< Updated upstream
     t.bigint "vineyard_id", null: false
+=======
+>>>>>>> Stashed changes
     t.index ["slug"], name: "index_wines_on_slug", unique: true
     t.index ["vineyard_id"], name: "index_wines_on_vineyard_id"
   end

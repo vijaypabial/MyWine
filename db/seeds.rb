@@ -22,7 +22,7 @@ end
 puts "Hello"
 12.times do |wine|
 	Wine.create!(
-	vineyard_id: "2",
+	vineyard_id: Vineyard.last.id,
 	title: "Mud House#{wine}",
 	wine_image: "https://via.placeholder.com/300x150",
 	variety: "Sauvignon Blanc #{wine}",
