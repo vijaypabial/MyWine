@@ -36,5 +36,5 @@ yarn-debug.log*
 .yarn-integrity
 
 # Special files
-/config/database.yml
+# /config/database.yml
 !storage.yml
