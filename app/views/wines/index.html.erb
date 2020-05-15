@@ -5,7 +5,7 @@
  <% @wines.each do |wine|%>
      <p><%= link_to wine.title, wine_path(wine)%></p>
      <p><%= wine.vineyard_id%></p>
-     <p><%= image_tag("download.jpeg")%></p>
+     <%= image_tag(wine.wine_image)%> <!-- this creates an <img src="https:image_url_from_web"> -->
      <p><%= wine.variety%></p>
      <p><%= wine.description%></p>
      <p><%= wine.price%></p>

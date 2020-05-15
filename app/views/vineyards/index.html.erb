@@ -16,7 +16,7 @@
     <% @vineyards.each do |vineyard| %>
     
         <p><%= vineyard.title %></p>
-        <p><%= vineyard.main_image %></p>
+        <%= image_tag(vineyard.main_image) %> <!-- this creates an <img src="https:image_url_from_web"> -->
         <p><%= vineyard.about %></p>
         <tr><%= link_to 'Show', vineyard %></tr>
         <tr><%= link_to 'Edit', edit_vineyard_path(vineyard) %></tr>
