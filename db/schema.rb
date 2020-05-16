@@ -78,8 +78,8 @@ ActiveRecord::Schema.define(version: 2020_05_14_213634) do
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
     t.string "slug"
-    t.integer "status", default: 0
     t.bigint "vineyard_id", null: false
+    t.integer "status", default: 0
     t.index ["slug"], name: "index_wines_on_slug", unique: true
     t.index ["vineyard_id"], name: "index_wines_on_vineyard_id"
   end
