@@ -1,5 +1,6 @@
 class VineyardsController < ApplicationController
   before_action :set_vineyard, only: [:show, :edit, :update, :destroy]
+  before_action :authenticate_user!, except: [:show, :index]
 
   # GET /vineyards
   # GET /vineyards.json

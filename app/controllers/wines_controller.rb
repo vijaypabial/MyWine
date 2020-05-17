@@ -1,5 +1,6 @@
 class WinesController < ApplicationController
   before_action :set_wine, only: [:show, :edit, :update, :destroy, :toggle_status]
+  before_action :authenticate_user!, except: [:show, :index]
     def index
         @wines = Wine.all
         @page_title = "Wines"

@@ -19,9 +19,10 @@
         <%= image_tag(vineyard.main_image) %> <!-- this creates an <img src="https:image_url_from_web"> -->
         <p><%= vineyard.about %></p>
         <tr><%= link_to 'Show', vineyard %></tr>
+        <%if :admin do%>
         <tr><%= link_to 'Edit', edit_vineyard_path(vineyard) %></tr>
         <tr><%= link_to 'Delete', vineyard, method: :delete, data: { confirm: 'Are you sure?' } %></tr>
-    
+        <%end%>
     <% end %>
   </tbody>
 </table>
