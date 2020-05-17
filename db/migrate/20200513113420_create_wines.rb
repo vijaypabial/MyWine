@@ -5,7 +5,7 @@ class CreateWines < ActiveRecord::Migration[6.0]
       t.string :variety
       t.text :description
       t.text :wine_image
-      t.decimal :price
+      t.decimal :price, precision: 8, scale:2
 
       t.timestamps
     end

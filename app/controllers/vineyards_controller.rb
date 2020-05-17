@@ -1,17 +1,24 @@
 class VineyardsController < ApplicationController
-  before_action :set_vineyard, only: [:show, :edit, :update, :destroy]
+  before_action :set_vineyard, only: [:show, :edit, :update, :destroy,]
   before_action :authenticate_user!, except: [:show, :index]
+  before_action :authorize, only: [:create, :new]
 
   # GET /vineyards
   # GET /vineyards.json
   def index
     @vineyards = Vineyard.all
     @page_title = "Vineyards"
+    
   end
 
   # GET /vineyards/1
   # GET /vineyards/1.json
   def show
+  end
+
+  def our_wines
+    @wines = Vineyard.find(params[:vineyard_id]).wines
+  
   end
 
   # GET /vineyards/new
@@ -72,5 +79,12 @@ class VineyardsController < ApplicationController
     # Only allow a list of trusted parameters through.
     def vineyard_params
       params.require(:vineyard).permit(:title, :about, :main_image)
+    end
+
+    def authorize
+      if !current_user.has_role?(:admin)
+        flash[:alert] = "You are not authorizrd!!"
+        redirect_to root_path
+      end
     end
 end

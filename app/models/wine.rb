@@ -1,6 +1,8 @@
 class Wine < ApplicationRecord
   belongs_to :vineyard
 
+  has_many :wine_lists_item
+
   has_one_attached :wine_image
 
   extend FriendlyId

@@ -1,4 +1,5 @@
 class User < ApplicationRecord
+  rolify
   # Include default devise modules. Others available are:
   # :confirmable, :lockable, :timeoutable, :trackable and :omniauthable
   devise :database_authenticatable, :registerable,
@@ -10,4 +11,7 @@ class User < ApplicationRecord
          def last_name
            self.split.last
          end
+
+  has_many :wine_lists_items
+  has_many :wines, through: :wine_lists_items
 end

@@ -3,30 +3,26 @@
 <h1>Vineyards</h1>
 
 <table>
-  <thead>
-    <tr>
-      <th>Title</th>
-      <th>About</th>
-      <th>Main image</th>
-      <th colspan="3"></th>
-    </tr>
-  </thead>
+ 
 
   <tbody>
     <% @vineyards.each do |vineyard| %>
     
-        <p><%= vineyard.title %></p>
-        <%= image_tag(vineyard.main_image) %> <!-- this creates an <img src="https:image_url_from_web"> -->
-        <p><%= vineyard.about %></p>
-        <tr><%= link_to 'Show', vineyard %></tr>
-        <%if :admin do%>
-        <tr><%= link_to 'Edit', edit_vineyard_path(vineyard) %></tr>
-        <tr><%= link_to 'Delete', vineyard, method: :delete, data: { confirm: 'Are you sure?' } %></tr>
+      <h1><%= vineyard.title %></h1>
+      <%= image_tag(vineyard.main_image) %> <!-- this creates an <img src="https:image_url_from_web"> -->
+      <h2>About us: </h2>
+      <p> <%= vineyard.about %></p>
+      <tr><%= link_to 'Show', vineyard %></tr>
+     <tr><%= link_to 'Our Wines', our_wines_path(vineyard_id: vineyard.id) %></tr>
+        <% if current_user.has_role?(:admin) %>
+          <tr><%= link_to 'Edit', edit_vineyard_path(vineyard) %></tr>
+          <tr><%= link_to 'Delete', vineyard, method: :delete, data: { confirm: 'Are you sure?' } %></tr>
+          <%= link_to 'New Vineyard', new_vineyard_path %>
         <%end%>
-    <% end %>
+    <%end%>
   </tbody>
 </table>
 
 <br>
 
-<%= link_to 'New Vineyard', new_vineyard_path %>
+

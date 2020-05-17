@@ -1,15 +1,23 @@
 <p id="notice"><%= notice %></p>
 <h1>Wines</h1>
-<%= link_to "Create new Wine", new_wine_path%>
-
+<% if current_user.has_role?(:admin) %>
+    <%= link_to "Create new Wine", new_wine_path%>
+<%end%> 
  <% @wines.each do |wine|%>
-     <p><%= link_to wine.title, wine_path(wine)%></p>
-     <p><%= wine.vineyard_id%></p>
-     <%= image_tag(wine.wine_image)%> <!-- this creates an <img src="https:image_url_from_web"> -->
-     <p><%= wine.variety%></p>
-     <p><%= wine.description%></p>
-     <p><%= wine.price%></p>
-     <%= link_to wine.status, toggle_status_wine_path(wine)%>
-     <%= link_to "Edit", edit_wine_path(wine)%>
-     <%= link_to 'Delete Item', wine_path(wine), method: :delete, data: { confirm: 'Are you sure?' } %>
+    <p><%= link_to wine.title, wine_path(wine)%></p>
+    <p><%= wine.vineyard_id%></p>
+    <%= image_tag(wine.wine_image)%> <!-- this creates an <img src="https:image_url_from_web"> -->
+    <p><%= wine.variety%></p>
+    <p><%= wine.description%></p>
+    <%if wine.price %>
+    <h5><%= number_to_currency wine.price %></h5>
+    <%= link_to "Buy Now!", new_order_path(wine_id: wine.id)%>
     <%end%>
+   
+   <p> <% if current_user.has_role?(:admin) %>
+        <%= link_to wine.status, toggle_status_wine_path(wine)%>
+        <%= link_to "Edit", edit_wine_path(wine)%>
+        <%= link_to 'Delete Item', wine_path(wine), method: :delete, data: { confirm: 'Are you sure?' } %>
+       <%end%>
+    </p>
+<%end%>

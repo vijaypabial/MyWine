@@ -1,6 +1,9 @@
+<h1>Your Order</h1>
 <h1><%=@wine.title%></h1>
 <p><%=image_tag (@wine.wine_image)%></p>
 <em><%=@wine.variety%></em>
 <p><%=@wine.description%></p>
 <p><%=number_to_currency @wine.price%></p>
-<%= link_to "Back", wines_path%>
+<button id="pay-now">Checkout Now<button>
+<p><%= link_to "Back", wines_path%></p>
+

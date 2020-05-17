@@ -1,0 +1,9 @@
+<h1> My Wines</h1>
+
+<%if @wines%>
+<%@wines.each do |wine|%>
+<p><%=link_to wine.title, wine_path(wine)%></p>
+<p><%= image_tag(wine.wine_image) %></p>
+<p><%= wine.price %></p>
+<%end%>
+<%end%>
