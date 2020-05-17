@@ -5,6 +5,7 @@ class VineyardsController < ApplicationController
   # GET /vineyards.json
   def index
     @vineyards = Vineyard.all
+    @page_title = "Vineyards"
   end
 
   # GET /vineyards/1

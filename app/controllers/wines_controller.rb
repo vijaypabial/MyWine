@@ -2,6 +2,7 @@ class WinesController < ApplicationController
   before_action :set_wine, only: [:show, :edit, :update, :destroy, :toggle_status]
     def index
         @wines = Wine.all
+        @page_title = "Wines"
     end
 
     def new
@@ -12,6 +13,7 @@ class WinesController < ApplicationController
     end
 
     def show
+      @page_title = @wine.title
     end
 
     def destroy
