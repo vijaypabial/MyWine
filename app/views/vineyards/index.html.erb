@@ -9,7 +9,8 @@
     <% @vineyards.each do |vineyard| %>
     
       <h1><%= link_to vineyard.title, vineyard_path(vineyard) %></h1>
-      <%= image_tag(vineyard.main_image) %> <!-- this creates an <img src="https:image_url_from_web"> -->
+      <%= if @vineyard.main_image.attached? image_tag(vineyard.main_image)  %> 
+      <%end%> <!-- this creates an <img src="https:image_url_from_web"> -->
       <h2>About us: </h2>
       <p> <%= vineyard.about %></p>
      <tr><%= link_to 'Explore Our Wines', our_wines_path(vineyard_id: vineyard.id) %></tr>
