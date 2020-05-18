@@ -4,6 +4,7 @@
 <%@wines.each do |wine|%>
 <p><%=link_to wine.title, wine_path(wine)%></p>
 <p><%= if wine.wine_image.attached? image_tag(wine.wine_image) %></p>
+   <%end%>
 <p><%= wine.description%></p>
 <p><%= number_to_currency wine.price %></p>
 <%if current_user%>
