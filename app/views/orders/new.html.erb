@@ -5,5 +5,18 @@
 <p><%=@wine.description%></p>
 <p><%=number_to_currency @wine.price%></p>
 <button id="pay-now">Checkout Now<button>
+
+<script src="https://js.stripe.com/v3/"></script>
+
+<script>
+    var stripe = Stripe('<%=Rails.application.credentials.dig(:stripe, :publishable_key)%>');
+    stripe.redirectToCheckout({
+    sessionId: '<%= @session.id %>'
+    }).then(function (result) {
+    // If `redirectToCheckout` fails due to a browser or network
+    // error, display the localized error message to your customer
+    // using `result.error.message`.
+    });
+</script>
 <p><%= link_to "Back", wines_path%></p>
 
