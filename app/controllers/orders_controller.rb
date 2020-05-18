@@ -1,4 +1,5 @@
 class OrdersController < ApplicationController
+  before_action :authenticate_user!
   def new
     @wine = Wine.find(params[:wine_id])
     Stripe.api_key = Rails.application.credentials.dig(:stripe, :secret_key)

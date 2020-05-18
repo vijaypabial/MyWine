@@ -3,4 +3,5 @@
 <em><%=@wine.variety%></em>
 <p><%=@wine.description%></p>
 <p><%=number_to_currency @wine.price%></p>
+<p><%= link_to "Buy Now!", new_order_path(wine_id: @wine.id)%></p>
 <%= link_to "Back", wines_path%>

@@ -8,13 +8,12 @@
   <tbody>
     <% @vineyards.each do |vineyard| %>
     
-      <h1><%= vineyard.title %></h1>
+      <h1><%= link_to vineyard.title, vineyard_path(vineyard) %></h1>
       <%= image_tag(vineyard.main_image) %> <!-- this creates an <img src="https:image_url_from_web"> -->
       <h2>About us: </h2>
       <p> <%= vineyard.about %></p>
-      <tr><%= link_to 'Show', vineyard %></tr>
-     <tr><%= link_to 'Our Wines', our_wines_path(vineyard_id: vineyard.id) %></tr>
-        <% if current_user.has_role?(:admin) %>
+     <tr><%= link_to 'Explore Our Wines', our_wines_path(vineyard_id: vineyard.id) %></tr>
+        <% if user_signed_in? && current_user.has_role?(:admin) %>
           <tr><%= link_to 'Edit', edit_vineyard_path(vineyard) %></tr>
           <tr><%= link_to 'Delete', vineyard, method: :delete, data: { confirm: 'Are you sure?' } %></tr>
           <%= link_to 'New Vineyard', new_vineyard_path %>

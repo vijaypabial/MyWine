@@ -6,16 +6,18 @@
 </p>
 
 <p>
-  <strong>About:</strong>
-  <%= @vineyard.about %>
-</p>
-
-<p>
   <strong>Main image:</strong>
   <%= image_tag(@vineyard.main_image) %>
 </p>
 
-<%= link_to "Our Wines", our_wines_path(@vineyard) %>
+<p>
+  <strong>About:</strong>
+  <%= @vineyard.about %>
+</p>
 
+<%= link_to "Explore Our Wines", our_wines_path(vineyard_id: @vineyard.id) %>
+
+<%if user_signed_in? && current_user.has_role?(:admin)%>
 <%= link_to 'Edit', edit_vineyard_path(@vineyard) %> |
 <%= link_to 'Back', vineyards_path %>
+<%end%>

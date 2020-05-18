@@ -6,5 +6,10 @@
 <p><%= image_tag(wine.wine_image) %></p>
 <p><%= wine.description%></p>
 <p><%= number_to_currency wine.price %></p>
+<%if current_user%>
+<p><%= link_to "Add to Wishlist", my_wines_path(current_user)%></p>
+<%end%>
+
+<p><%= link_to "Buy Now!", new_order_path(wine_id: wine.id)%></p>
 <%end%>
 <%end%>

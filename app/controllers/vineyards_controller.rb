@@ -1,6 +1,6 @@
 class VineyardsController < ApplicationController
   before_action :set_vineyard, only: [:show, :edit, :update, :destroy,]
-  before_action :authenticate_user!, except: [:show, :index]
+  before_action :authenticate_user!, except: [:show, :index, :our_wines]
   before_action :authorize, only: [:create, :new]
 
   # GET /vineyards
