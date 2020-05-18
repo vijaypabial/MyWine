@@ -4,4 +4,5 @@ class WineListsItemsController < ApplicationController
         @wines = current_user.wines
     end
 
+
 end
