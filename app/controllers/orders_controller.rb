@@ -1,7 +1,7 @@
 class OrdersController < ApplicationController
   def new
     @wine = Wine.find(params[:wine_id])
-    Stripe.api_key = 'Rails.application.credentials.dig(:stripe, :secret_key)'
+    Stripe.api_key = Rails.application.credentials.dig(:stripe, :secret_key)
     @session = Stripe::Checkout::Session.create(
       payment_method_types: ['card'],
       line_items: [{
@@ -15,5 +15,8 @@ class OrdersController < ApplicationController
     success_url: 'http://localhost:3000/orders/complete',
     cancel_url: 'http://localhost:3000/orders/cancel',
     )
+  end
+  def complete
+    
   end
 end

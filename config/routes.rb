@@ -2,6 +2,8 @@ Rails.application.routes.draw do
   
   
   get 'orders/new'
+  get 'orders/cancel', to:'pages#home'
+  get 'orders/complete', to: 'orders#complete'
   devise_for :users, path: "", path_names: {sign_in: 'login', sign_out: 'logout', sign_up: 'register' }
   get "my_wines", to: "wine_lists_items#index", as: "my_wines"
   get "our_wines", to: "vineyards#our_wines", as: "our_wines"
