@@ -6,6 +6,10 @@
  
 
   <tbody>
+    <% if user_signed_in? && current_user.has_role?(:admin) %>
+      <p><%= link_to 'New Vineyard', new_vineyard_path %></p>
+    <%end%>
+
     <% @vineyards.each do |vineyard| %>
     
       <h1><%= link_to vineyard.title, vineyard_path(vineyard) %></h1>
@@ -13,11 +17,10 @@
      <!-- this creates an <img src="https:image_url_from_web"> -->
       <h2>About us: </h2>
       <p> <%= vineyard.about %></p>
-     <tr><%= link_to 'Explore Our Wines', our_wines_path(vineyard_id: vineyard.id) %></tr>
-        <% if user_signed_in? && current_user.has_role?(:admin) %>
-          <tr><%= link_to 'Edit', edit_vineyard_path(vineyard) %></tr>
-          <tr><%= link_to 'Delete', vineyard, method: :delete, data: { confirm: 'Are you sure?' } %></tr>
-          <%= link_to 'New Vineyard', new_vineyard_path %>
+      <p><%= link_to 'Explore Our Wines', our_wines_path(vineyard_id: vineyard.id) %></>
+      <% if user_signed_in? && current_user.has_role?(:admin) %>
+          <p><%= link_to 'Edit', edit_vineyard_path(vineyard) %></p>
+          <p><%= link_to 'Delete', vineyard, method: :delete, data: { confirm: 'Are you sure?' } %></p>
         <%end%>
     <%end%>
   </tbody>
