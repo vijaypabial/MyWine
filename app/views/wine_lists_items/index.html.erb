@@ -5,5 +5,8 @@
 <p><%=link_to wine.title, wine_path(wine)%></p>
 <p><%= image_tag(wine.wine_image) %></p>
 <p><%= wine.price %></p>
+<%if current_user%>
+<p><%= link_to "Add to Wishlist", my_wines_path(wine_id: wine.id), method: :post%></p>
+<%end%>
 <%end%>
 <%end%>

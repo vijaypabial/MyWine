@@ -10,25 +10,17 @@
   </head>
 
   <body>
-      <p class="notice"><%= notice %></p>
-      <p class="alert"><%= alert %></p>
-      <nav>
-        <p><%= link_to "Home", root_path%> | 
-           <%= link_to "Vineyards", vineyards_path%> | 
-           <%= link_to "Wines", wines_path%> |
-           <% if user_signed_in?%> 
-              <%= link_to "My-Wines", my_wines_path%> |
-            <% end %>
-            <%= link_to "Contact-us", contact_path%> | 
-            <% if user_signed_in?%> 
-                <%= link_to "Logout", destroy_user_session_path, method: :delete%>
-            <% else %>
-                <%= link_to "Register",  new_user_registration_path%>
-                <%= link_to "Login", new_user_session_path%>
-            <% end %>
-         </p>
-      </nav>
- 
-    <%= yield %>
+    <div class="cover-container d-flex w-100 h-100 p-3 mx-auto flex-column">
+      <header class="masthead mb-auto">
+        <div class="inner">
+          <p class="notice"><%= notice %></p>
+          <p class="alert"><%= alert %></p>
+
+          <%=render "shared/application_nav"%>
+          
+         <div><%= yield %></div> 
+        </div>
+      </header>
+     </div>
   </body>
 </html>
