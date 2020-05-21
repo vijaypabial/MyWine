@@ -8,10 +8,10 @@
     <h1><%= link_to wine.title, wine_path(wine)%></h1>
     <p>Vineyard: <%= wine.vineyard.title%></p>
     <%= image_tag(wine.wine_image)%> <!-- this creates an <img src="https:image_url_from_web"> -->
-    <p><%= wine.variety%></p>
+    <p>Variety : <%= wine.variety%></p>
     <p><%= wine.description%></p>
     <% if wine.price %>
-        <h5><%= number_to_currency wine.price %></h5>
+        <h5>Price : <%= number_to_currency wine.price %></h5>
       <%if current_user%>
         <p><%= link_to "Buy Now!", new_order_path(wine_id: wine.id)%></p>
         <p><%= link_to "Add to Wishlist", my_wines_path(wine_id: wine.id), method: :post%></p>
