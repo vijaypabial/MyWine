@@ -4,7 +4,7 @@ Rails.application.routes.draw do
   devise_for :users, path: "", path_names: {sign_in: 'login', sign_out: 'logout', sign_up: 'register' }
   
   get 'orders/new'
-  get 'orders/cancel', to:'pages#home'
+  get 'orders/cancel', to:'wines#index'
   get 'orders/complete', to: 'orders#complete'
   
   post "my_wines", to: "wine_lists_items#create", as: "my_wines"
