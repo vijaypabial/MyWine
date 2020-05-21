@@ -6,7 +6,7 @@
 <p><%= image_tag(wine.wine_image) %></p>
 <p><%= wine.price %></p>
 <%if current_user%>
-<p><%= link_to "Add to Wishlist", my_wines_path(wine_id: wine.id), method: :post%></p>
+<p><%= link_to "Buy Now!", new_order_path(wine_id: wine.id)%></p>
 <%end%>
 <%end%>
 <%end%>
